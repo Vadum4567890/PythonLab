@@ -1,4 +1,4 @@
-from models.Camera import Camera
+from models.camera import Camera
 
 
 class DigitalCamera(Camera):

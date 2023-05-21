@@ -1,7 +1,7 @@
-from models.DigitalCamera import DigitalCamera
-from models.FilmCamera import FilmCamera
-from models.HybridCamera import HybridCamera
-from models.SpeedCamera import SpeedCamera
+from models.digital_camera import DigitalCamera
+from models.film_camera import FilmCamera
+from models.hybrid_camera import HybridCamera
+from models.speed_camera import SpeedCamera
 
 
 class CameraManager:
