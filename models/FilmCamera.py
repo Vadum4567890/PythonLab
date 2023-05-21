@@ -1,14 +1,14 @@
-from Camera import Camera
+from models.Camera import Camera
 
 
 class FilmCamera(Camera):
-    def __init__(self, brand="", model="", lens="", filmType="", filmISO=0):
+    def __init__(self, brand, model, lens, film_type, film_iso):
         super().__init__(brand, model, lens)
-        self.filmType = filmType
-        self.filmISO = filmISO
+        self.film_type = film_type
+        self.film_iso = film_iso
 
-    def takePhoto(self):
-        return f"Film Type: {self.filmType}, Film ISO: {self.filmISO}"
+    def take_photo(self):
+        return f"Film Camera\nFilm Type: {self.film_type}\nFilm ISO: {self.film_iso}"
 
     def __str__(self):
-        return super().__str__() + f", Film Type: {self.filmType}, Film ISO: {self.filmISO}"
+        return super().__str__() + f"\nFilm Type: {self.film_type}\nFilm ISO: {self.film_iso}"

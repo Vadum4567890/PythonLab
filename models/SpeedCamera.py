@@ -1,16 +1,14 @@
-from Camera import Camera
+from models.Camera import Camera
 
 
 class SpeedCamera(Camera):
-    def __init__(self, brand="", model="", lens="", resolution="", zoom=1, speedRange="", maxSpeedCaptured=0):
+    def __init__(self, brand, model, lens, max_speed_detection, price):
         super().__init__(brand, model, lens)
-        self.resolution = resolution
-        self.zoom = zoom
-        self.speedRange = speedRange
-        self.maxSpeedCaptured = maxSpeedCaptured
+        self.max_speed_detection = max_speed_detection
+        self.price = price
 
-    def takePhoto(self):
-        return f"Resolution: {self.resolution}, Zoom: {self.zoom}, Speed Range: {self.speedRange}"
+    def take_photo(self):
+        return f"Speed Camera\nMax Speed Detection: {self.max_speed_detection} km/h\nPrice: {self.price}"
 
     def __str__(self):
-        return super().__str__() + f", Resolution: {self.resolution}, Zoom: {self.zoom}, Speed Range: {self.speedRange}, Max Speed Captured: {self.maxSpeedCaptured}"
+        return super().__str__() + f"\nMax Speed Detection: {self.max_speed_detection} km/h\nPrice: {self.price}"
