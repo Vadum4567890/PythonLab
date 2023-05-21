@@ -28,6 +28,7 @@ class Camera:
             Camera._instance = Camera()
         return Camera._instance
 
+
 cameras = [Camera(),
            Camera("Canon EOS 5D Mark IV", "6720x4480", 1.5, "CFast 2.0", 100),
            Camera.getInstance(),
