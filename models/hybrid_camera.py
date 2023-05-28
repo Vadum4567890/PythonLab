@@ -1,3 +1,8 @@
+# pylint: disable=too-many-arguments
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
+# pylint: disable=line-too-long
+# pylint: disable=import-error
 from models.camera import Camera
 
 
@@ -11,9 +16,13 @@ class HybridCamera(Camera):
         self.zoom = zoom
         self.memory_card_type = memory_card_type
         self.color = color
+        self.electronic_matrix = {"CRD", "CSOS"}
 
-    def take_photo(self):                                                               # To String take_photo
+    def take_photo(self):
+        """
+        Method to take a photo
+        """
         return f"Hybrid Camera\nResolution: {self.resolution}\nZoom: {self.zoom}\nColor: {self.color}"
 
-    def __str__(self):                                                                  # To String class Hybrid Camera
+    def __str__(self):
         return super().__str__() + f"\nResolution: {self.resolution}\nZoom: {self.zoom}\nColor: {self.color}"
