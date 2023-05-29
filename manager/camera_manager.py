@@ -36,28 +36,20 @@ class CameraManager:
     def add_camera(self, camera):
         self.cameras.append(camera)
 
-    @DecoratorManager.method_name_decorator
-    @DecoratorManager.argument_count_decorator
+    @DecoratorManager.method_history_decorator
     def find_all_with_same_brand(self, brand):
         return [camera for camera in self.cameras if camera.brand == brand]
 
-    @DecoratorManager.method_name_decorator
-    @DecoratorManager.save_result_decorator
+    @DecoratorManager.validate_method_name
     def find_all_with_same_model(self, model):
         return [cam for cam in self.cameras if cam.model == model]
 
-    @DecoratorManager.method_name_decorator
-    @DecoratorManager.call_count_decorator
     def get_results_of_method(self, method_name):
         return [getattr(camera, method_name)() for camera in self.cameras]
 
-    @DecoratorManager.method_name_decorator
-    @DecoratorManager.call_limit_decorator
     def get_enumerated_objects(self):
         return list(enumerate(self.cameras))
 
-    @DecoratorManager.method_name_decorator
-    @DecoratorManager.save_result_decorator
     def get_zip_results(self, method_name):
         return [(camera, getattr(camera, method_name)()) for camera in self.cameras]
 
