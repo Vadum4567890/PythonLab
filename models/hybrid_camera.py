@@ -3,6 +3,7 @@
 # pylint: disable=missing-module-docstring
 # pylint: disable=line-too-long
 # pylint: disable=import-error
+
 from models.camera import Camera
 
 
@@ -10,13 +11,19 @@ class HybridCamera(Camera):
     """
     Hybrid Camera Class which have 4 new params: resolution, zoom, memory_card_type, color
     """
-    def __init__(self, brand, model, lens, resolution, zoom, memory_card_type, color):  # constructor
-        super().__init__(brand, model, lens)
+    def __init__(self, brand, model, lens, battery_level, resolution, zoom, memory_card_type, color):  # constructor
+        super().__init__(brand, model, lens, battery_level)
         self.resolution = resolution
         self.zoom = zoom
         self.memory_card_type = memory_card_type
         self.color = color
         self.electronic_matrix = {"CRD", "CSOS"}
+
+    def charge(self):
+        """
+        Method to charge the Hybrid camera
+        """
+        print("Hybrid camera charging...")
 
     def take_photo(self):
         """

@@ -2,6 +2,7 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-module-docstring
 # pylint: disable=import-error
+from manager.decorator_manager import RedundantChargeException, DecoratorManager
 from models.camera import Camera
 
 
@@ -10,8 +11,8 @@ class DigitalCamera(Camera):
     Digital Camera Class which has 3 new params: resolution, zoom, memory_card_type
     """
 
-    def __init__(self, brand, model, lens, resolution, zoom, memory_card_type):
-        super().__init__(brand, model, lens)
+    def __init__(self, brand, model, lens, battery_level,resolution, zoom, memory_card_type):
+        super().__init__(brand, model, lens, battery_level)
         self.resolution = resolution
         self.zoom = zoom
         self.memory_card_type = memory_card_type
@@ -29,6 +30,12 @@ class DigitalCamera(Camera):
         Method to delete all memory
         """
         self.photos_count = 0
+
+    def charge(self):
+        """
+        Method to charge the digital camera
+        """
+        print("Digital camera charging...")
 
     def change_settings(self, resolution, zoom):
         """

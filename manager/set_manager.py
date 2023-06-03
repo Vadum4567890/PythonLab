@@ -29,7 +29,7 @@ class SetManager:
 
     def __next__(self):
         if self.index >= len(self.regular_manager):
-            raise StopIteration
+            raise StopIteration("Iteration was stopped")
         item = self.regular_manager[self.index]
         self.index += 1
         return item

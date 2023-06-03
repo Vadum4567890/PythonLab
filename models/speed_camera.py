@@ -3,18 +3,25 @@
 # pylint: disable=missing-module-docstring
 # pylint: disable=line-too-long
 # pylint: disable=import-error
+
 from models.camera import Camera
 
 
 class SpeedCamera(Camera):
     """
-    Hybrid Camera Class which have 2 new params: max_speed_detection, price
+    Speed Camera Class which have 2 new params: max_speed_detection, price
     """
-    def __init__(self, brand, model, lens, max_speed_detection, price):              # constructor
-        super().__init__(brand, model, lens)
+    def __init__(self, brand, model, lens, battery_level, max_speed_detection, price):              # constructor
+        super().__init__(brand, model, lens, battery_level)
         self.max_speed_detection = max_speed_detection
         self.price = price
         self.electronic_matrix = {"FSD", "ASFE"}
+
+    def charge(self):
+        """
+        Method to charge the Speed camera
+        """
+        print("Speed camera charging...")
 
     def take_photo(self):
         """

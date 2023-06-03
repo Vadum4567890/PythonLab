@@ -4,8 +4,18 @@
 # pylint: disable=import-error
 # pylint: disable=line-too-long
 import functools
+import logging
 import re
 import time
+import os
+
+
+class RedundantChargeException(Exception):
+    pass
+
+
+class InvalidModeException(Exception):
+    pass
 
 
 class DecoratorManager:
@@ -47,3 +57,26 @@ class DecoratorManager:
 
         return wrapper
 
+    @staticmethod
+    def logged(mode):
+        def decorator(func):
+            @functools.wraps(func)
+            def wrapper(*args, **kwargs):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    error_message = str(e)
+                    if mode == 'console':
+                        logging.error(error_message)
+                    elif mode == 'file':
+                        log_file = 'log.txt'
+                        if not os.path.exists(log_file):
+                            open(log_file, 'a').close()
+                        with open(log_file, 'a') as file:
+                            file.write(error_message + '\n')
+                    else:
+                        raise InvalidModeException(f"Invalid mode: {mode}")
+
+            return wrapper
+
+        return decorator
